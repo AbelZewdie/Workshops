@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="mortgageCalculator.js"></script>
+</head>
+
+
+
+<body>
+<input type="number" id="principalAmountElement" value="53000"> Principal:<br><br>
+<input type="number" id="percentageRateElement" value="7.625"> Rate:<br><br>
+<input type="number" id="numberOfYearsElement" value="15"> Years:<br><br>
+<button id="calc">Calculate</button><hr>
+Monthly Payment: $<input type="number" id="outputElement" readonly><br> 
+Total Paid: $<input type="number" id="totalElement" readonly> <br>
+Interest Paid: $<input type="number" id="interestPaidElement" readonly> <br>
+</body>
+
+
+
+<script>
+function doCalc(){
+  const principalAmount = Number(principalAmountElement.value);
+  const percentageRate = Number(percentageRateElement.value) / 100;
+  const numberOfMonths= Number(numberOfYearsElement.value);
+  const result = getPayment(principalAmount, percentageRate, numberOfMonths);
+  outputElement.value = result.toFixed(2);
+
+  const totalPaid = result * numberOfMonths;
+  totalElement.value = totalPaid;
+  interestPaidElement.value = totalPaid - principalAmount;
+}
+
+calc.onclick = doCalc;
+</script>
+
+</html>
