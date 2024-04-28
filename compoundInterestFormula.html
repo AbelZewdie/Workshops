@@ -13,7 +13,7 @@ $ <input type="number" id="interestRateElement" value="1.75"> Interest Rate: <br
 $ <input type="number" id="numberOfYearsElement" value="5"> Years: <br><br>
 <button id="calc">Calculate</button><hr>
 Compund Interest Ending Balance: $<input type="number" id="outputElement" readonly><br><br>
-Interest Rate: $<input type="number" id="interestOutputElement" readonly>
+Interest Rate Paid: $<input type="number" id="interestOutputElement" readonly>
 
 
   </head>
@@ -25,8 +25,13 @@ function doCalc(){
   const numberOfYears = Number(numberOfYearsElement.value);
 
   const result = getPayment(deposit, interestRate, numberOfYears);
-  outputElement.value = result
+  outputElement.value = result.toFixed(2)
   
+  const interPaid = result - deposit;
+
+  interestOutputElement.value = interPaid.toFixed(2); 
+  
+
 }
 calc.onclick = doCalc;
   </script>
